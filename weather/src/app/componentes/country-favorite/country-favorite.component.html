@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="weather-card">
+        <div class="top">
+          <div class="wrapper">
+            <div class="mynav">
+              <a href="" [routerLink]="['/favorite']" title="favorite"><i class="far fa-heart lnr-cog"></i> </a>
+            </div>
+
+            <h1 *ngFor="let dataday of dataDay?.current?.weather_descriptions" class="heading">{{dataday}}</h1>
+            <h3 class="location" *ngIf="dataDay?.location">{{dataDay?.location.name}}</h3>
+            <p class="temp">
+              <span class="temp-value" *ngIf="dataDay?.current">{{dataDay?.current.temperature}}</span>
+              <span class="deg">0</span>
+              <a href="javascript:;"><span class="temp-type">C</span></a>
+            </p>
+
+
+            <ul class="forecast">
+              <li *ngFor="let week of dataWeek?.DailyForecasts" class="active">
+                <div class="text-white text-left">
+                  <div class=" float-left">
+                    <!-- Showing the day -->
+                    <p>{{week.Date | date : "EEEE"}}</p>
+                  </div>
+                  <div class=" float-right">
+                    <!-- Showing the temperature  -->
+                    <p>{{week.Temperature.Minimum.Value}} c</p>
+                  </div>
+                </div>
+                <p><br></p>
+              </li>
+
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
